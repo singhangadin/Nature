@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sun_normal">
+        <item>#44FFB441</item>
+        <item>#88FEC748</item>
+        <item>#BBFFDF5E</item>
+        <item>#FFF9C7</item>
+    </string-array>
+
+</resources>

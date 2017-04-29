@@ -16,7 +16,6 @@ import com.github.angads25.nature.model.ElevatedView;
  */
 
 public class MountainView extends ElevatedView {
-
     private Point a,b,c;
     private Path path;
     private float peakSize;

@@ -17,6 +17,7 @@ public class ElevatedView extends View implements Comparable<ElevatedView>{
     protected Paint paint;
     protected int minDim, width, height;
     protected int zFactor;
+    protected Context context;
 
     protected void initView() {
         paint = new Paint();
@@ -25,10 +26,14 @@ public class ElevatedView extends View implements Comparable<ElevatedView>{
 
     public ElevatedView(Context context) {
         super(context);
+        this.context = context;
+        initView();
     }
 
     public ElevatedView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        this.context = context;
+        initView();
     }
 
     @Override
