@@ -35,7 +35,6 @@ public class SunView extends ElevatedView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
         float radii = radius;
         float diff = radii/(colorTheme.length + (colorTheme.length));
         for (String aColorTheme : colorTheme) {

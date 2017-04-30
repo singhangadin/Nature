@@ -25,13 +25,11 @@ public class MoonView extends ElevatedView {
 
     public MoonView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        setVisible(10);
         setSkyColor(Color.parseColor("#333333"));
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
         paint.setColor(Color.WHITE);
         if(visible > 0) {
             canvas.drawCircle(minDim / 2, minDim / 2, radius, paint);
@@ -46,7 +44,7 @@ public class MoonView extends ElevatedView {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         setMeasuredDimension(minDim, minDim);
-        radius = 0.48f * minDim;
+        radius = 0.38f * minDim;
     }
 
     public int getVisible() {
@@ -57,10 +55,6 @@ public class MoonView extends ElevatedView {
         visible = (visible * vmax)/100;
         this.visible = visible;
         invalidate();
-    }
-
-    public int getSkyColor() {
-        return skyColor;
     }
 
     public void setSkyColor(int skyColor) {

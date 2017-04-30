@@ -7,9 +7,9 @@
     android:background="#9999FF"
     tools:context="com.github.angads25.naturedemo.MainActivity">
 
-    <com.github.angads25.nature.elements.SmallCloudView
-        android:id="@+id/moon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <com.github.angads25.nature.environment.SceneryViewGroup
+        android:id="@+id/scenery"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </FrameLayout>
