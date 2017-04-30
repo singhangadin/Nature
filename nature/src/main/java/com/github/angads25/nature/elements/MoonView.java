@@ -16,9 +16,8 @@ import com.github.angads25.nature.model.ElevatedView;
 
 public class MoonView extends ElevatedView {
     private float radius;
-    private float eclipse = 1;
-    private int visible = 0;
-    private int skyColor = Color.BLACK;
+    private int visible;
+    private int skyColor, vmax = 140;
 
     public MoonView(Context context) {
         super(context);
@@ -26,15 +25,21 @@ public class MoonView extends ElevatedView {
 
     public MoonView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        setVisible(10);
+        setSkyColor(Color.parseColor("#333333"));
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         paint.setColor(Color.WHITE);
-        canvas.drawCircle(minDim/2, minDim/2, radius, paint);
+        if(visible > 0) {
+            canvas.drawCircle(minDim / 2, minDim / 2, radius, paint);
+        }
         paint.setColor(skyColor);
-        canvas.drawCircle((minDim/2)+((visible*(minDim/2))/100),(minDim/2)-((visible*(minDim/2))/100), radius  - ((radius*eclipse)/100),paint);
+        if(visible != 0 && visible!= vmax) {
+            canvas.drawCircle((minDim / 2) + ((visible * (minDim / 2)) / 100), (minDim / 2) - ((visible * (minDim / 2)) / 100), radius, paint);
+        }
     }
 
     @Override
@@ -45,21 +50,17 @@ public class MoonView extends ElevatedView {
     }
 
     public int getVisible() {
-        return (visible*100)/140;
+        return (visible*100)/vmax;
     }
 
     public void setVisible(int visible) {
-        visible = (visible*140)/100;
+        visible = (visible * vmax)/100;
         this.visible = visible;
         invalidate();
     }
 
     public int getSkyColor() {
         return skyColor;
-    }
-
-    public void setEclipse(float eclipse) {
-        this.eclipse = eclipse;
     }
 
     public void setSkyColor(int skyColor) {
