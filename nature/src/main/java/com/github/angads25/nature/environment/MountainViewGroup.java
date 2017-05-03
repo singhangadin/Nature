@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -19,6 +20,7 @@ public class MountainViewGroup extends ViewGroup {
     private int width, height, minDim;
     private Random rand;
     private Rect mTmpChildRect;
+    private ArrayList<Integer> leftNoise, rightNoise;
 
     public MountainViewGroup(Context context) {
         super(context);
@@ -33,6 +35,8 @@ public class MountainViewGroup extends ViewGroup {
     private void initViewGroup() {
         rand = new Random();
         mTmpChildRect = new Rect();
+        leftNoise = new ArrayList<>();
+        rightNoise = new ArrayList<>();
     }
 
     @Override
@@ -45,7 +49,9 @@ public class MountainViewGroup extends ViewGroup {
         int parts = width/childs;
         for(int i = 0; i < childs; i++) {
             View child = getChildAt(i);
-            child.measure(MeasureSpec.makeMeasureSpec(parts,
+            leftNoise.add(rand.nextInt(minDim/4));
+            rightNoise.add(rand.nextInt(minDim/4));
+            child.measure(MeasureSpec.makeMeasureSpec(parts + leftNoise.get(i) + rightNoise.get(i),
                     MeasureSpec.EXACTLY),
                     MeasureSpec.makeMeasureSpec(height,
                             MeasureSpec.EXACTLY));
@@ -59,8 +65,8 @@ public class MountainViewGroup extends ViewGroup {
         int start = getLeft();
         for(int i = 0; i < childs; i++) {
             View child = getChildAt(i);
-            mTmpChildRect.left = start ;
-            mTmpChildRect.right = mTmpChildRect.left + parts;
+            mTmpChildRect.left = start - leftNoise.get(i);
+            mTmpChildRect.right = mTmpChildRect.left + parts + leftNoise.get(i) + rightNoise.get(i);
             mTmpChildRect.top = getTop();
             mTmpChildRect.bottom = (height/2) + (height/3);
             child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);

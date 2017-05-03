@@ -114,7 +114,7 @@ public class SceneryViewGroup extends ViewGroup{
                 child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
             }
             else if (child instanceof CloudView) {
-                int limit = (height/5);
+                int limit = (height/10);
                 int top = rand.nextInt(limit);
                 if(child instanceof SmallCloudView) {
                     int left = rand.nextInt(width - (minDim/10) - (minDim/6));

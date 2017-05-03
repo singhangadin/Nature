@@ -47,9 +47,9 @@ public class MainActivity extends Activity {
         MountainView mountain = new MountainView(this);
         MountainView mountain1 = new MountainView(this);
         MountainView mountain2 = new MountainView(this);
-        mountain.setColor(Color.GREEN);
-        mountain1.setColor(Color.GREEN);
-        mountain2.setColor(Color.GREEN);
+        mountain.setColor(Color.parseColor("#FF0000"));
+        mountain1.setColor(Color.parseColor("#00FF00"));
+        mountain2.setColor(Color.parseColor("#0000FF"));
         mountain.setPeakSize(rand.nextInt(50) + 50);
         mountain1.setPeakSize(rand.nextInt(50) + 50);
         mountain2.setPeakSize(rand.nextInt(50) + 50);
