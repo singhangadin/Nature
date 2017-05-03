@@ -101,51 +101,57 @@ public class SceneryViewGroup extends ViewGroup{
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int childs = getChildCount();
+        int widgetPadding = minDim / 10;
         for(int i = 0; i<childs; i++) {
             View child = getChildAt(i);
             if(child instanceof SkyView) {
                 child.layout(l, t, r, b);
             }
             else if(child instanceof SunView) {
-                mTmpChildRect.left = minDim/10;
-                mTmpChildRect.right = mTmpChildRect.left + (minDim/5);
-                mTmpChildRect.top = minDim/10;
-                mTmpChildRect.bottom = mTmpChildRect.top + (minDim/5);
+                int sunSize = minDim/5;
+                mTmpChildRect.left = widgetPadding;
+                mTmpChildRect.right = mTmpChildRect.left + sunSize;
+                mTmpChildRect.top = widgetPadding;
+                mTmpChildRect.bottom = mTmpChildRect.top + sunSize;
                 child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
             }
             else if (child instanceof CloudView) {
-                int limit = (height/10);
+                int limit = height / 10;
                 int top = rand.nextInt(limit);
                 if(child instanceof SmallCloudView) {
-                    int left = rand.nextInt(width - (minDim/10) - (minDim/6));
-                    mTmpChildRect.left = left + (minDim/10);
-                    mTmpChildRect.right = mTmpChildRect.left + (minDim/6);
-                    mTmpChildRect.top = top + (minDim/10);
-                    mTmpChildRect.bottom = mTmpChildRect.top + (minDim/6);
+                    int smallCloudSize = minDim / 6;
+                    int left = rand.nextInt(width - widgetPadding - smallCloudSize);
+                    mTmpChildRect.left = left + widgetPadding;
+                    mTmpChildRect.right = mTmpChildRect.left + smallCloudSize;
+                    mTmpChildRect.top = top + widgetPadding;
+                    mTmpChildRect.bottom = mTmpChildRect.top + smallCloudSize;
                     child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
                 }
                 else if(child instanceof MediumCloudView) {
-                    int left = rand.nextInt(width - (minDim/10) - (minDim/5));
-                    mTmpChildRect.left = left + (minDim/10);
-                    mTmpChildRect.right = mTmpChildRect.left + (minDim/5);
-                    mTmpChildRect.top = top + (minDim/10);
-                    mTmpChildRect.bottom = mTmpChildRect.top + (minDim/5);
+                    int mediumCloudSize = minDim / 5;
+                    int left = rand.nextInt(width - widgetPadding - mediumCloudSize);
+                    mTmpChildRect.left = left + widgetPadding;
+                    mTmpChildRect.right = mTmpChildRect.left + mediumCloudSize;
+                    mTmpChildRect.top = top + widgetPadding;
+                    mTmpChildRect.bottom = mTmpChildRect.top + mediumCloudSize;
                     child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
                 }
                 else if(child instanceof LargeCloudView) {
-                    int left = rand.nextInt(width - (minDim/10) - (minDim/3));
-                    mTmpChildRect.left = left + (minDim/10);
-                    mTmpChildRect.right = mTmpChildRect.left + (minDim/3);
-                    mTmpChildRect.top = top + (minDim/10);
-                    mTmpChildRect.bottom = mTmpChildRect.top + (minDim/3);
+                    int largeCloudSize = minDim / 3;
+                    int left = rand.nextInt(width - widgetPadding - largeCloudSize);
+                    mTmpChildRect.left = left + widgetPadding;
+                    mTmpChildRect.right = mTmpChildRect.left + largeCloudSize;
+                    mTmpChildRect.top = top + widgetPadding;
+                    mTmpChildRect.bottom = mTmpChildRect.top + largeCloudSize;
                     child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
                 }
             }
             else if (child instanceof MoonView) {
-                mTmpChildRect.left = (minDim/2) - (minDim/10);
-                mTmpChildRect.right = mTmpChildRect.left + (minDim/5);
-                mTmpChildRect.top = minDim/10;
-                mTmpChildRect.bottom = mTmpChildRect.top + (minDim/5);
+                int moonSize = minDim/5;
+                mTmpChildRect.left = (minDim/2) - widgetPadding;
+                mTmpChildRect.right = mTmpChildRect.left + moonSize;
+                mTmpChildRect.top = widgetPadding;
+                mTmpChildRect.bottom = mTmpChildRect.top + moonSize;
                 child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
             }
             else if (child instanceof MountainViewGroup) {
