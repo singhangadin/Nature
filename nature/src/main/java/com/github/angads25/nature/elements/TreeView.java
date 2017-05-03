@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
-import com.github.angads25.nature.model.ElevatedView;
+import com.github.angads25.nature.model.NatureView;
 
 /**
  * <p>
@@ -12,7 +12,7 @@ import com.github.angads25.nature.model.ElevatedView;
  * </p>
  */
 
-public class TreeView extends ElevatedView{
+public class TreeView extends NatureView {
 
     public TreeView(Context context) {
         super(context);

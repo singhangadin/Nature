@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
-import com.github.angads25.nature.model.ElevatedView;
+import com.github.angads25.nature.model.NatureView;
 
 /**
  * <p>
@@ -14,7 +14,7 @@ import com.github.angads25.nature.model.ElevatedView;
  * </p>
  */
 
-public class MoonView extends ElevatedView {
+public class MoonView extends NatureView {
     private float radius;
     private int visible;
     private int skyColor, vmax = 140;

@@ -10,7 +10,7 @@ import android.util.AttributeSet;
  * </p>
  */
 
-public class CloudView extends ElevatedView {
+public class CloudView extends NatureView {
     protected int cloudColor;
 
     public CloudView(Context context) {

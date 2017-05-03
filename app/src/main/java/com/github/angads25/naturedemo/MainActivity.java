@@ -8,11 +8,12 @@ import com.github.angads25.nature.elements.LargeCloudView;
 import com.github.angads25.nature.elements.MediumCloudView;
 import com.github.angads25.nature.elements.MoonView;
 import com.github.angads25.nature.elements.MountainView;
+import com.github.angads25.nature.elements.SkyView;
 import com.github.angads25.nature.elements.SmallCloudView;
 import com.github.angads25.nature.elements.SunView;
 import com.github.angads25.nature.environment.MountainViewGroup;
 import com.github.angads25.nature.environment.SceneryViewGroup;
-import com.github.angads25.nature.scenes.SkyView;
+import com.github.angads25.nature.environment.SkyViewGroup;
 
 import java.util.Random;
 
@@ -22,26 +23,28 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SceneryViewGroup view = new SceneryViewGroup(this);
+        SkyViewGroup group = new SkyViewGroup(this);
         SkyView sky = new SkyView(this);
-        sky.setSkyColor(Color.parseColor("#333333"));
-        view.addView(sky);
+        sky.setSkyColor(Color.parseColor("#000000"));
+        sky.setShowStars(true);
+        group.addView(sky);
 
         SunView sun = new SunView(this);
         sun.setColorTheme(getResources().getStringArray(R.array.sun_normal));
-        view.addView(sun);
+        group.addView(sun);
 
         MoonView moon = new MoonView(this);
         moon.setSkyColor(sky.getSkyColor());
         moon.setVisible(30);
-        view.addView(moon);
+        group.addView(moon);
 
         SmallCloudView smallCloud[] = new SmallCloudView[1];
         for(int i=0;i<smallCloud.length;i++) {
             smallCloud[i] = new SmallCloudView(this);
             smallCloud[i].setCloudColor(Color.parseColor("#CCCDDD"));
-            view.addView(smallCloud[i]);
+            group.addView(smallCloud[i]);
         }
-
+        view.addView(group);
         Random rand = new Random();
         MountainViewGroup mountainViewGroup = new MountainViewGroup(this);
         MountainView mountain = new MountainView(this);
@@ -60,7 +63,7 @@ public class MainActivity extends Activity {
 
         MediumCloudView mediumView = new MediumCloudView(this);
         mediumView.setCloudColor(Color.parseColor("#DDDEEE"));
-        view.addView(mediumView);
+        group.addView(mediumView);
 
         LargeCloudView largeView = new LargeCloudView(this);
         largeView.setCloudColor(Color.parseColor("#EEEFFF"));

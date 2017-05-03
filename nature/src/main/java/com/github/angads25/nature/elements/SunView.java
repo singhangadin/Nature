@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.github.angads25.nature.R;
-import com.github.angads25.nature.model.ElevatedView;
+import com.github.angads25.nature.model.NatureView;
 
 /**
  * <p>
@@ -15,7 +15,7 @@ import com.github.angads25.nature.model.ElevatedView;
  * </p>
  */
 
-public class SunView extends ElevatedView {
+public class SunView extends NatureView {
     private float radius;
     private String[] colorTheme;
 

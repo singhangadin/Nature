@@ -7,7 +7,7 @@ import android.graphics.Path;
 import android.graphics.Point;
 import android.util.AttributeSet;
 
-import com.github.angads25.nature.model.ElevatedView;
+import com.github.angads25.nature.model.NatureView;
 
 /**<p>
  * Created by Angad on 1/3/17.
@@ -15,7 +15,7 @@ import com.github.angads25.nature.model.ElevatedView;
  */
 
 //Add Shadow
-public class MountainView extends ElevatedView {
+public class MountainView extends NatureView {
     private Point a,b,c;
     private Path path;
     private float peakSize;

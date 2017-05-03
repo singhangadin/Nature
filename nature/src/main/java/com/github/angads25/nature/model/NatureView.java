@@ -13,7 +13,7 @@ import android.view.View;
  * </p>
  */
 
-public class ElevatedView extends View implements Comparable<ElevatedView>{
+public class NatureView extends View implements Comparable<NatureView>{
     protected Paint paint;
     protected int minDim, width, height;
     protected int zFactor;
@@ -24,20 +24,20 @@ public class ElevatedView extends View implements Comparable<ElevatedView>{
         paint.setAntiAlias(true);
     }
 
-    public ElevatedView(Context context) {
+    public NatureView(Context context) {
         super(context);
         this.context = context;
         initView();
     }
 
-    public ElevatedView(Context context, @Nullable AttributeSet attrs) {
+    public NatureView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         initView();
     }
 
     @Override
-    public int compareTo(@NonNull ElevatedView o) {
+    public int compareTo(@NonNull NatureView o) {
         return Integer.valueOf(zFactor).compareTo(o.zFactor);
     }
 

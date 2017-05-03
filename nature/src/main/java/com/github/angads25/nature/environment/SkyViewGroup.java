@@ -2,13 +2,17 @@ package com.github.angads25.nature.environment;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.angads25.nature.elements.LargeCloudView;
 import com.github.angads25.nature.elements.MediumCloudView;
+import com.github.angads25.nature.elements.MoonView;
+import com.github.angads25.nature.elements.SkyView;
 import com.github.angads25.nature.elements.SmallCloudView;
+import com.github.angads25.nature.elements.SunView;
 import com.github.angads25.nature.model.CloudView;
 
 import java.util.Random;
@@ -19,24 +23,26 @@ import java.util.Random;
  * </p>
  */
 
-public class SceneryViewGroup extends ViewGroup{
-    private int width, height, minDim;
-    private Rect mTmpChildRect;
+public class SkyViewGroup extends ViewGroup {
+    private int width;
+    private int height;
+    private int minDim;
     private Random rand;
+    private Rect mTmpChildRect;
 
-    public SceneryViewGroup(Context context) {
+    public SkyViewGroup(Context context) {
         super(context);
         initViewGroup();
     }
 
-    public SceneryViewGroup(Context context, AttributeSet attrs) {
+    public SkyViewGroup(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initViewGroup();
     }
 
     private void initViewGroup() {
-        mTmpChildRect = new Rect();
         rand = new Random();
+        mTmpChildRect = new Rect();
     }
 
     @Override
@@ -48,16 +54,16 @@ public class SceneryViewGroup extends ViewGroup{
         int childs = getChildCount();
         for(int i = 0; i < childs; i++) {
             View child = getChildAt(i);
-            if(child instanceof SkyViewGroup) {
+            if(child instanceof SkyView) {
                 child.measure(MeasureSpec.makeMeasureSpec(width,
                         MeasureSpec.EXACTLY),
-                        MeasureSpec.makeMeasureSpec((height/2) + (height/3),
+                        MeasureSpec.makeMeasureSpec(height,
                                 MeasureSpec.EXACTLY));
             }
-            else if (child instanceof MountainViewGroup) {
-                child.measure(MeasureSpec.makeMeasureSpec(width,
+            else if(child instanceof SunView) {
+                child.measure(MeasureSpec.makeMeasureSpec(minDim/5,
                         MeasureSpec.EXACTLY),
-                        MeasureSpec.makeMeasureSpec((height/2) + (height/3),
+                        MeasureSpec.makeMeasureSpec(minDim/5,
                                 MeasureSpec.EXACTLY));
             }
             else if (child instanceof CloudView) {
@@ -80,28 +86,34 @@ public class SceneryViewGroup extends ViewGroup{
                                     MeasureSpec.EXACTLY));
                 }
             }
+            else if (child instanceof MoonView) {
+                child.measure(MeasureSpec.makeMeasureSpec(minDim/5,
+                        MeasureSpec.EXACTLY),
+                        MeasureSpec.makeMeasureSpec(minDim/5,
+                                MeasureSpec.EXACTLY));
+            }
         }
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int childs = getChildCount();
+        int widgetPadding = minDim / 10;
         for(int i = 0; i<childs; i++) {
             View child = getChildAt(i);
-            if(child instanceof SkyViewGroup) {
-                child.layout(l, t, r, (height/2) + (height/3));
+            if(child instanceof SkyView) {
+                child.layout(l, t, r, b);
             }
-            else if (child instanceof MountainViewGroup) {
-                mTmpChildRect.left = l;
-                mTmpChildRect.right = r;
-                mTmpChildRect.top = t;
-                mTmpChildRect.bottom = (height/2) + (height/3);
+            else if(child instanceof SunView) {
+                int sunSize = minDim/5;
+                mTmpChildRect.left = widgetPadding;
+                mTmpChildRect.right = mTmpChildRect.left + sunSize;
+                mTmpChildRect.top = widgetPadding;
+                mTmpChildRect.bottom = mTmpChildRect.top + sunSize;
                 child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
             }
             else if (child instanceof CloudView) {
-                //Corner case for above clouds
-                int widgetPadding = minDim / 10;
-                int limit = height / 20;
+                int limit = height / 10;
                 int top = rand.nextInt(limit);
                 if(child instanceof SmallCloudView) {
                     int smallCloudSize = minDim / 6;
@@ -130,6 +142,14 @@ public class SceneryViewGroup extends ViewGroup{
                     mTmpChildRect.bottom = mTmpChildRect.top + largeCloudSize;
                     child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
                 }
+            }
+            else if (child instanceof MoonView) {
+                int moonSize = minDim/5;
+                mTmpChildRect.left = (minDim/2) - widgetPadding;
+                mTmpChildRect.right = mTmpChildRect.left + moonSize;
+                mTmpChildRect.top = widgetPadding;
+                mTmpChildRect.bottom = mTmpChildRect.top + moonSize;
+                child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
             }
         }
     }
