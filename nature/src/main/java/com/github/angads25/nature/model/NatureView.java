@@ -16,7 +16,7 @@ import android.view.View;
 public class NatureView extends View implements Comparable<NatureView>{
     protected Paint paint;
     protected int minDim, width, height;
-    protected int zFactor;
+    protected int zFactor, center;
     protected Context context;
 
     protected void initView() {
@@ -55,5 +55,6 @@ public class NatureView extends View implements Comparable<NatureView>{
         width = getMeasuredWidth();
         height = getMeasuredHeight();
         minDim = Math.min(getMeasuredHeight(),getMeasuredWidth());
+        center = minDim / 2;
     }
 }
