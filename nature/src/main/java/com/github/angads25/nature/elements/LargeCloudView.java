@@ -37,19 +37,19 @@ public class LargeCloudView extends CloudView {
         canvas.translate(minDim / 75, minDim / 75);
 
         paint.setColor(Color.parseColor("#444444"));
-        canvas.drawCircle((minDim / 2) - (radiusSmall) - (radiusMedium / 4) - (radiusLarge), minDim / 2 + ((radiusLarge - radiusSmall)), radiusSmall, paint);
-        canvas.drawCircle((minDim / 2) - (radiusLarge) - (radiusMedium / 8), minDim / 2 + (radiusLarge - radiusMedium), radiusMedium, paint);
-        canvas.drawCircle(minDim / 2, minDim / 2, radiusLarge, paint);
-        canvas.drawCircle((minDim / 2) + (radiusLarge) + (radiusMedium / 8), minDim / 2 + (radiusLarge - radiusMedium), radiusMedium, paint);
-        canvas.drawCircle((minDim / 2) + (radiusSmall) + (radiusMedium / 4) + (radiusLarge), minDim / 2 + ((radiusLarge - radiusSmall)), radiusSmall, paint);
+        canvas.drawCircle(center - radiusSmall - (radiusMedium / 4) - radiusLarge, center + radiusLarge - radiusSmall, radiusSmall, paint);
+        canvas.drawCircle(center - radiusLarge - (radiusMedium / 8), center + radiusLarge - radiusMedium, radiusMedium, paint);
+        canvas.drawCircle(center, center, radiusLarge, paint);
+        canvas.drawCircle(center + radiusLarge + (radiusMedium / 8), center + radiusLarge - radiusMedium, radiusMedium, paint);
+        canvas.drawCircle(center + radiusSmall + (radiusMedium / 4) + (radiusLarge), center + radiusLarge - radiusSmall, radiusSmall, paint);
 
         canvas.restore();
 
         paint.setColor(cloudColor);
-        canvas.drawCircle((minDim / 2) - (radiusSmall) - (radiusMedium / 4) - (radiusLarge), minDim / 2 + ((radiusLarge - radiusSmall)), radiusSmall, paint);
-        canvas.drawCircle((minDim / 2) - (radiusLarge) - (radiusMedium / 8), minDim / 2 + (radiusLarge - radiusMedium), radiusMedium, paint);
-        canvas.drawCircle(minDim / 2, minDim / 2, radiusLarge, paint);
-        canvas.drawCircle((minDim / 2) + (radiusLarge) + (radiusMedium / 8), minDim / 2 + (radiusLarge - radiusMedium), radiusMedium, paint);
-        canvas.drawCircle((minDim / 2) + (radiusSmall) + (radiusMedium / 4) + (radiusLarge), minDim / 2 + ((radiusLarge - radiusSmall)), radiusSmall, paint);
+        canvas.drawCircle(center - radiusSmall - (radiusMedium / 4) - radiusLarge, center + radiusLarge - radiusSmall, radiusSmall, paint);
+        canvas.drawCircle(center - radiusLarge - (radiusMedium / 8), center + radiusLarge - radiusMedium, radiusMedium, paint);
+        canvas.drawCircle(center, center, radiusLarge, paint);
+        canvas.drawCircle(center + radiusLarge + (radiusMedium / 8), center + radiusLarge - radiusMedium, radiusMedium, paint);
+        canvas.drawCircle(center + radiusSmall + (radiusMedium / 4) + radiusLarge, center + radiusLarge - radiusSmall, radiusSmall, paint);
     }
 }

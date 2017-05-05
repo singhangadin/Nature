@@ -39,7 +39,7 @@ public class SunView extends NatureView {
         float diff = radii/(colorTheme.length + (colorTheme.length));
         for (String aColorTheme : colorTheme) {
             paint.setColor(Color.parseColor(aColorTheme));
-            canvas.drawCircle(minDim / 2, minDim / 2, radii, paint);
+            canvas.drawCircle(center, center, radii, paint);
             radii -= diff;
         }
     }

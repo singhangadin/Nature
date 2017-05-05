@@ -36,23 +36,23 @@ public class SmallCloudView extends CloudView {
 
         //Cloud shadow
         paint.setColor(Color.parseColor("#444444"));
-        canvas.drawRect((minDim / 2) - (minDim / 3.5f), minDim - (minDim/5) - (minDim / 4), (minDim /2) + (minDim / 5), (minDim - (minDim/5)), paint);
+        canvas.drawRect(center - (minDim / 3.5f), minDim - (minDim/5) - (minDim / 4), center + (minDim / 5), (minDim - (minDim/5)), paint);
         //Draw big center bubble
-        canvas.drawCircle((minDim / 2) - (minDim / 20), (minDim/2) - (minDim / 8f), radiusLarge, paint);
+        canvas.drawCircle(center - (minDim / 20), center - (minDim / 8f), radiusLarge, paint);
         //Draw small Left bubble
-        canvas.drawCircle((minDim / 2) - (minDim / 3.5f), (minDim - (minDim/5)) - radiusSmall, radiusSmall, paint);
+        canvas.drawCircle(center - (minDim / 3.5f), (minDim - (minDim/5)) - radiusSmall, radiusSmall, paint);
         //Draw medium right bubble
-        canvas.drawCircle((minDim / 2) + (minDim / 5), (minDim - (minDim/5)) - radiusMedium, radiusMedium, paint);
+        canvas.drawCircle(center + (minDim / 5), (minDim - (minDim/5)) - radiusMedium, radiusMedium, paint);
 
         canvas.restore();
 
         paint.setColor(cloudColor);
-        canvas.drawRect((minDim / 2) - (minDim / 3.5f), minDim - (minDim/5) - (minDim / 4), (minDim /2) + (minDim / 5), (minDim - (minDim/5)), paint);
+        canvas.drawRect(center - (minDim / 3.5f), minDim - (minDim/5) - (minDim / 4), center + (minDim / 5), (minDim - (minDim/5)), paint);
         //Draw big center bubble
-        canvas.drawCircle((minDim / 2) - (minDim / 20), (minDim/2) - (minDim / 8f), radiusLarge, paint);
+        canvas.drawCircle(center - (minDim / 20), center - (minDim / 8f), radiusLarge, paint);
         //Draw small Left bubble
-        canvas.drawCircle((minDim / 2) - (minDim / 3.5f), (minDim - (minDim/5)) - radiusSmall, radiusSmall, paint);
+        canvas.drawCircle(center - (minDim / 3.5f), (minDim - (minDim/5)) - radiusSmall, radiusSmall, paint);
         //Draw medium right bubble
-        canvas.drawCircle((minDim / 2) + (minDim / 5), (minDim - (minDim/5)) - radiusMedium, radiusMedium, paint);
+        canvas.drawCircle(center + (minDim / 5), (minDim - (minDim/5)) - radiusMedium, radiusMedium, paint);
     }
 }

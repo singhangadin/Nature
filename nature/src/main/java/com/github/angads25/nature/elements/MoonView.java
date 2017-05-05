@@ -32,11 +32,11 @@ public class MoonView extends NatureView {
     protected void onDraw(Canvas canvas) {
         paint.setColor(Color.WHITE);
         if(visible > 0) {
-            canvas.drawCircle(minDim / 2, minDim / 2, radius, paint);
+            canvas.drawCircle(center, center, radius, paint);
         }
         paint.setColor(skyColor);
         if(visible != 0 && visible!= vmax) {
-            canvas.drawCircle((minDim / 2) + ((visible * (minDim / 2)) / 100), (minDim / 2) - ((visible * (minDim / 2)) / 100), radius, paint);
+            canvas.drawCircle(center + ((visible * center) / 100), center - ((visible * center) / 100), radius, paint);
         }
     }
 

@@ -42,7 +42,7 @@ public class SkyView extends NatureView {
         if(showStars) {
             paint.setColor(Color.WHITE);
             for(int i = 0; i< Math.min(width, height); i++) {
-                canvas.drawPoint(random.nextInt(width),random.nextInt(height), paint);
+                canvas.drawPoint(random.nextInt(width), random.nextInt(height), paint);
             }
         }
     }
