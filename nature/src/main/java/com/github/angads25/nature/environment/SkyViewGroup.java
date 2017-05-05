@@ -5,7 +5,6 @@ import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.github.angads25.nature.elements.LargeCloudView;
 import com.github.angads25.nature.elements.MediumCloudView;
@@ -14,6 +13,7 @@ import com.github.angads25.nature.elements.SkyView;
 import com.github.angads25.nature.elements.SmallCloudView;
 import com.github.angads25.nature.elements.SunView;
 import com.github.angads25.nature.model.CloudView;
+import com.github.angads25.nature.model.NatureViewGroup;
 
 import java.util.Random;
 
@@ -23,10 +23,7 @@ import java.util.Random;
  * </p>
  */
 
-public class SkyViewGroup extends ViewGroup {
-    private int width;
-    private int height;
-    private int minDim;
+public class SkyViewGroup extends NatureViewGroup {
     private Random rand;
     private Rect mTmpChildRect;
 
@@ -47,10 +44,7 @@ public class SkyViewGroup extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        minDim = Math.min(width, height);
-        setMeasuredDimension(width, height);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int childs = getChildCount();
         for(int i = 0; i < childs; i++) {
             View child = getChildAt(i);

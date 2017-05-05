@@ -4,12 +4,12 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.github.angads25.nature.elements.LargeCloudView;
 import com.github.angads25.nature.elements.MediumCloudView;
 import com.github.angads25.nature.elements.SmallCloudView;
 import com.github.angads25.nature.model.CloudView;
+import com.github.angads25.nature.model.NatureViewGroup;
 
 import java.util.Random;
 
@@ -19,8 +19,7 @@ import java.util.Random;
  * </p>
  */
 
-public class SceneryViewGroup extends ViewGroup{
-    private int width, height, minDim;
+public class SceneryViewGroup extends NatureViewGroup{
     private Rect mTmpChildRect;
     private Random rand;
 
@@ -41,10 +40,7 @@ public class SceneryViewGroup extends ViewGroup{
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        minDim = Math.min(width, height);
-        setMeasuredDimension(width, height);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int childs = getChildCount();
         for(int i = 0; i < childs; i++) {
             View child = getChildAt(i);

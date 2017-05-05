@@ -15,7 +15,6 @@ import java.util.Random;
  */
 
 public class ForestViewGroup extends ViewGroup  {
-    private int width, height, minDim;
     private Random rand;
     private Rect mTmpChildRect;
     private ArrayList<Integer> leftNoise, rightNoise;
@@ -40,10 +39,6 @@ public class ForestViewGroup extends ViewGroup  {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        minDim = Math.min(width, height);
-        setMeasuredDimension(width, height);
     }
 
     @Override

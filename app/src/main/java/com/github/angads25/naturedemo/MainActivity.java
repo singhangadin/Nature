@@ -23,28 +23,28 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SceneryViewGroup view = new SceneryViewGroup(this);
-        SkyViewGroup group = new SkyViewGroup(this);
+        SkyViewGroup skyGroup = new SkyViewGroup(this);
         SkyView sky = new SkyView(this);
-        sky.setSkyColor(Color.parseColor("#000000"));
-        sky.setShowStars(true);
-        group.addView(sky);
+        sky.setSkyColor(Color.parseColor("#BCD4E6"));
+        sky.setShowStars(false);
+        skyGroup.addView(sky);
 
         SunView sun = new SunView(this);
         sun.setColorTheme(getResources().getStringArray(R.array.sun_normal));
-        group.addView(sun);
+        skyGroup.addView(sun);
 
         MoonView moon = new MoonView(this);
         moon.setSkyColor(sky.getSkyColor());
         moon.setVisible(30);
-        group.addView(moon);
+        skyGroup.addView(moon);
 
         SmallCloudView smallCloud[] = new SmallCloudView[1];
         for(int i=0;i<smallCloud.length;i++) {
             smallCloud[i] = new SmallCloudView(this);
             smallCloud[i].setCloudColor(Color.parseColor("#CCCDDD"));
-            group.addView(smallCloud[i]);
+            skyGroup.addView(smallCloud[i]);
         }
-        view.addView(group);
+        view.addView(skyGroup);
         Random rand = new Random();
         MountainViewGroup mountainViewGroup = new MountainViewGroup(this);
         MountainView mountain = new MountainView(this);
@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
 
         MediumCloudView mediumView = new MediumCloudView(this);
         mediumView.setCloudColor(Color.parseColor("#DDDEEE"));
-        group.addView(mediumView);
+        skyGroup.addView(mediumView);
 
         LargeCloudView largeView = new LargeCloudView(this);
         largeView.setCloudColor(Color.parseColor("#EEEFFF"));

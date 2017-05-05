@@ -5,7 +5,8 @@ import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
+
+import com.github.angads25.nature.model.NatureViewGroup;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -16,8 +17,7 @@ import java.util.Random;
  * </p>
  */
 
-public class MountainViewGroup extends ViewGroup {
-    private int width, height, minDim;
+public class MountainViewGroup extends NatureViewGroup {
     private Random rand;
     private Rect mTmpChildRect;
     private ArrayList<Integer> leftNoise, rightNoise;
@@ -41,10 +41,7 @@ public class MountainViewGroup extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        minDim = Math.min(width, height);
-        setMeasuredDimension(width, height);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int childs = getChildCount();
         int parts = width/childs;
         for(int i = 0; i < childs; i++) {
@@ -67,8 +64,8 @@ public class MountainViewGroup extends ViewGroup {
             View child = getChildAt(i);
             mTmpChildRect.left = start - leftNoise.get(i);
             mTmpChildRect.right = mTmpChildRect.left + parts + leftNoise.get(i) + rightNoise.get(i);
-            mTmpChildRect.top = getTop();
-            mTmpChildRect.bottom = (height/2) + (height/3);
+            mTmpChildRect.top = height / 6;
+            mTmpChildRect.bottom = bottom;
             child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
             start += parts;
         }
