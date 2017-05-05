@@ -19,7 +19,7 @@ import java.util.Random;
  * </p>
  */
 
-public class SceneryViewGroup extends NatureViewGroup{
+public class SceneryViewGroup extends NatureViewGroup {
     private Rect mTmpChildRect;
     private Random rand;
 
@@ -47,20 +47,20 @@ public class SceneryViewGroup extends NatureViewGroup{
             if(child instanceof SkyViewGroup) {
                 child.measure(MeasureSpec.makeMeasureSpec(width,
                         MeasureSpec.EXACTLY),
-                        MeasureSpec.makeMeasureSpec((height/2) + (height/3),
+                        MeasureSpec.makeMeasureSpec((height >>> 1) + (height/3),
                                 MeasureSpec.EXACTLY));
             }
             else if (child instanceof MountainViewGroup) {
                 child.measure(MeasureSpec.makeMeasureSpec(width,
                         MeasureSpec.EXACTLY),
-                        MeasureSpec.makeMeasureSpec((height/2) + (height/3),
+                        MeasureSpec.makeMeasureSpec((height >>> 1) + (height/3),
                                 MeasureSpec.EXACTLY));
             }
             else if (child instanceof CloudView) {
                 if(child instanceof SmallCloudView) {
-                    child.measure(MeasureSpec.makeMeasureSpec(minDim/6,
+                    child.measure(MeasureSpec.makeMeasureSpec((minDim >>> 1)/3,
                             MeasureSpec.EXACTLY),
-                            MeasureSpec.makeMeasureSpec(minDim/6,
+                            MeasureSpec.makeMeasureSpec((minDim >>> 1)/3,
                                     MeasureSpec.EXACTLY));
                 }
                 else if(child instanceof MediumCloudView) {
@@ -85,22 +85,22 @@ public class SceneryViewGroup extends NatureViewGroup{
         for(int i = 0; i<childs; i++) {
             View child = getChildAt(i);
             if(child instanceof SkyViewGroup) {
-                child.layout(l, t, r, (height/2) + (height/3));
+                child.layout(l, t, r, (height >>> 1) + (height/3));
             }
             else if (child instanceof MountainViewGroup) {
                 mTmpChildRect.left = l;
                 mTmpChildRect.right = r;
                 mTmpChildRect.top = t;
-                mTmpChildRect.bottom = (height/2) + (height/3);
+                mTmpChildRect.bottom = (height >>> 1) + (height/3);
                 child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
             }
             else if (child instanceof CloudView) {
                 //Corner case for above clouds
-                int widgetPadding = minDim / 10;
-                int limit = height / 20;
+                int widgetPadding = (minDim >>> 1) / 5;
+                int limit = (height >>> 2) / 5;
                 int top = rand.nextInt(limit);
                 if(child instanceof SmallCloudView) {
-                    int smallCloudSize = minDim / 6;
+                    int smallCloudSize = (minDim >>> 1) / 3;
                     int left = rand.nextInt(width - widgetPadding - smallCloudSize);
                     mTmpChildRect.left = left + widgetPadding;
                     mTmpChildRect.right = mTmpChildRect.left + smallCloudSize;

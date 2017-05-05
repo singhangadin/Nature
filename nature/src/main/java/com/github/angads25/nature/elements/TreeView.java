@@ -43,8 +43,10 @@ public class TreeView extends NatureView {
         super.onDraw(canvas);
 
         //Stem
+        int padding = (minDim >>> 1) / 5;
+
         paint.setColor(Color.parseColor("#AA4422"));
-        canvas.drawRect(center - (minDim / 20), (minDim / 1.5f), center + (minDim / 20), minDim - (minDim/10), paint);
+        canvas.drawRect(center - (padding >>> 1), (minDim / 1.5f), center + (padding >>> 1), minDim - padding, paint);
 
         //Tree Layer
         paint.setColor(Color.parseColor("#22FF33"));
@@ -60,6 +62,6 @@ public class TreeView extends NatureView {
         setMeasuredDimension(minDim, minDim);
         lower[0].set(center - (int)(minDim / 3.5f), center + (int)(minDim / 4.5f));
         lower[1].set(center + (int)(minDim / 3.5f), center + (int)(minDim / 4.5f));
-        lower[2].set(center, minDim / 10);
+        lower[2].set(center, (minDim >>> 1) / 5);
     }
 }

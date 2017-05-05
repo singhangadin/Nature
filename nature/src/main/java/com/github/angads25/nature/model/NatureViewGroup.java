@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 public class NatureViewGroup extends ViewGroup {
     protected int width, height, minDim;
+    protected int center;
 
     public NatureViewGroup(Context context) {
         super(context);
@@ -23,7 +24,6 @@ public class NatureViewGroup extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-
     }
 
     @Override
@@ -32,5 +32,6 @@ public class NatureViewGroup extends ViewGroup {
         height = MeasureSpec.getSize(heightMeasureSpec);
         minDim = Math.min(width, height);
         setMeasuredDimension(width, height);
+        center = minDim >>> 1;
     }
 }

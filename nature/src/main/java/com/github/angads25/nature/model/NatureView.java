@@ -55,6 +55,6 @@ public class NatureView extends View implements Comparable<NatureView>{
         width = getMeasuredWidth();
         height = getMeasuredHeight();
         minDim = Math.min(getMeasuredHeight(),getMeasuredWidth());
-        center = minDim / 2;
+        center = minDim >>> 1;
     }
 }

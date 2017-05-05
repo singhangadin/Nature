@@ -29,7 +29,7 @@ public class MediumCloudView extends CloudView {
         //Draw Base Rectangle
         //TODO: Implement PorterDuff.Mode
         float radiusSmaller = minDim / 5;
-        float radiusSmall = minDim / 6;
+        float radiusSmall = (minDim >>> 1) / 3;
         float radiusMedium = minDim / 5;
         float radiusLarge = minDim / 4.75f;
 
@@ -37,7 +37,7 @@ public class MediumCloudView extends CloudView {
         canvas.translate(minDim / 75, minDim / 75);
 
         paint.setColor(Color.parseColor("#444444"));
-        canvas.drawRect(center - (minDim / 3.5f), minDim - (minDim/5) - (minDim / 4), (minDim /2) + (minDim / 5), (minDim - (minDim/5)), paint);
+        canvas.drawRect(center - (minDim / 3.5f), minDim - (minDim/5) - (minDim >>> 2), (minDim >>> 1) + (minDim / 5), (minDim - (minDim/5)), paint);
         //Draw big left bubble
         canvas.drawCircle(center - (minDim / 7.5f), center - (minDim/25), radiusLarge, paint);
         //Draw small Left bubble
@@ -45,12 +45,12 @@ public class MediumCloudView extends CloudView {
         //Draw medium small bubble
         canvas.drawCircle(center + (minDim / 5), (minDim - (minDim/5)) - radiusMedium, radiusMedium, paint);
         //Draw medium right bubble
-        canvas.drawCircle(center + (minDim / 10), (minDim/2) + (minDim/10) - radiusSmaller, radiusSmaller, paint);
+        canvas.drawCircle(center + ((minDim >>> 1) / 5), (minDim >>> 1) + ((minDim>>>1) / 5) - radiusSmaller, radiusSmaller, paint);
 
         canvas.restore();
 
         paint.setColor(cloudColor);
-        canvas.drawRect(center - (minDim / 3.5f), minDim - (minDim/5) - (minDim / 4), (minDim /2) + (minDim / 5), (minDim - (minDim/5)), paint);
+        canvas.drawRect(center - (minDim / 3.5f), minDim - (minDim/5) - (minDim >>> 2), (minDim >>> 1) + (minDim / 5), (minDim - (minDim/5)), paint);
         //Draw big left bubble
         canvas.drawCircle(center - (minDim / 7.5f), center - (minDim/25), radiusLarge, paint);
         //Draw small Left bubble
@@ -58,6 +58,6 @@ public class MediumCloudView extends CloudView {
         //Draw medium small bubble
         canvas.drawCircle(center + (minDim / 5), (minDim - (minDim/5)) - radiusMedium, radiusMedium, paint);
         //Draw medium right bubble
-        canvas.drawCircle(center + (minDim / 10), (minDim/2) + (minDim/10) - radiusSmaller, radiusSmaller, paint);
+        canvas.drawCircle(center + ((minDim >>> 1) / 5), (minDim >>> 1) + ((minDim >>> 1) / 5) - radiusSmaller, radiusSmaller, paint);
     }
 }

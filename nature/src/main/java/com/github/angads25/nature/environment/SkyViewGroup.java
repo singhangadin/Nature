@@ -62,9 +62,9 @@ public class SkyViewGroup extends NatureViewGroup {
             }
             else if (child instanceof CloudView) {
                 if(child instanceof SmallCloudView) {
-                    child.measure(MeasureSpec.makeMeasureSpec(minDim/6,
+                    child.measure(MeasureSpec.makeMeasureSpec((minDim >>> 1) / 3,
                             MeasureSpec.EXACTLY),
-                            MeasureSpec.makeMeasureSpec(minDim/6,
+                            MeasureSpec.makeMeasureSpec((minDim >>> 1) / 3,
                                     MeasureSpec.EXACTLY));
                 }
                 else if(child instanceof MediumCloudView) {
@@ -92,7 +92,7 @@ public class SkyViewGroup extends NatureViewGroup {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int childs = getChildCount();
-        int widgetPadding = minDim / 10;
+        int widgetPadding = (minDim >>> 1) / 5;
         for(int i = 0; i<childs; i++) {
             View child = getChildAt(i);
             if(child instanceof SkyView) {
@@ -107,10 +107,10 @@ public class SkyViewGroup extends NatureViewGroup {
                 child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
             }
             else if (child instanceof CloudView) {
-                int limit = height / 10;
+                int limit = (height >>> 1) / 5;
                 int top = rand.nextInt(limit);
                 if(child instanceof SmallCloudView) {
-                    int smallCloudSize = minDim / 6;
+                    int smallCloudSize = (minDim >>> 1) / 3;
                     int left = rand.nextInt(width - widgetPadding - smallCloudSize);
                     mTmpChildRect.left = left + widgetPadding;
                     mTmpChildRect.right = mTmpChildRect.left + smallCloudSize;
@@ -138,8 +138,8 @@ public class SkyViewGroup extends NatureViewGroup {
                 }
             }
             else if (child instanceof MoonView) {
-                int moonSize = minDim/5;
-                mTmpChildRect.left = (minDim/2) - widgetPadding;
+                int moonSize = minDim / 5;
+                mTmpChildRect.left = (minDim >>> 1) - widgetPadding;
                 mTmpChildRect.right = mTmpChildRect.left + moonSize;
                 mTmpChildRect.top = widgetPadding;
                 mTmpChildRect.bottom = mTmpChildRect.top + moonSize;

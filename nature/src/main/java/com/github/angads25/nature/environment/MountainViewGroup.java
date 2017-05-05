@@ -46,8 +46,8 @@ public class MountainViewGroup extends NatureViewGroup {
         int parts = width/childs;
         for(int i = 0; i < childs; i++) {
             View child = getChildAt(i);
-            leftNoise.add(rand.nextInt(minDim/4));
-            rightNoise.add(rand.nextInt(minDim/4));
+            leftNoise.add(rand.nextInt(minDim >>> 2));
+            rightNoise.add(rand.nextInt(minDim >>> 2));
             child.measure(MeasureSpec.makeMeasureSpec(parts + leftNoise.get(i) + rightNoise.get(i),
                     MeasureSpec.EXACTLY),
                     MeasureSpec.makeMeasureSpec(height,
@@ -64,7 +64,7 @@ public class MountainViewGroup extends NatureViewGroup {
             View child = getChildAt(i);
             mTmpChildRect.left = start - leftNoise.get(i);
             mTmpChildRect.right = mTmpChildRect.left + parts + leftNoise.get(i) + rightNoise.get(i);
-            mTmpChildRect.top = height / 6;
+            mTmpChildRect.top = (height >>> 1) / 3;
             mTmpChildRect.bottom = bottom;
             child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
             start += parts;

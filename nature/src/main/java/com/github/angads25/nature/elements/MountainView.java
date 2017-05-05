@@ -56,18 +56,17 @@ public class MountainView extends NatureView {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         //Left
-        a.set((width/2) - center, (height/2) + (height/3));
+        a.set((width >>> 1) - center, (height >>> 1) + (height/3));
         //Right
-        b.set((width/2) + center, (height/2) + (height/3));
-//        c.set((width/2), (int)((minDim==height?minDim:height)*(peakSize/100)));
+        b.set((width >>> 1) + center, (height >>> 1) + (height/3));
         //Top
-        c.set((width/2), (height/2) - (int)(minDim*(peakSize/100)));
+        c.set((width >>> 1), (height >>> 1) - (int)(minDim * (peakSize / 100)));
     }
 
     public void setPeakSize(float peakSize) {
         peakSize = 100 - peakSize;
         this.peakSize = peakSize;
-        c.set((width/2), getBottom() - (int)(minDim*(peakSize/100)));
+        c.set((width >>> 1), getBottom() - (int)(minDim*(peakSize/100)));
     }
 
     public void setColor(int color) {
