@@ -59,7 +59,7 @@ public class MountainViewGroup extends NatureViewGroup {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         int childs = getChildCount();
         int parts = width/childs;
-        int start = getLeft();
+        int start = left;
         for(int i = 0; i < childs; i++) {
             View child = getChildAt(i);
             mTmpChildRect.left = start - leftNoise.get(i);

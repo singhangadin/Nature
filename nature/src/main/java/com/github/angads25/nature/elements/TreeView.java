@@ -49,7 +49,7 @@ public class TreeView extends NatureView {
         canvas.drawRect(center - (padding >>> 1), (minDim / 1.5f), center + (padding >>> 1), minDim - padding, paint);
 
         //Tree Layer
-        paint.setColor(Color.parseColor("#22FF33"));
+        paint.setColor(Color.parseColor("#143306"));
         lowerLayer.moveTo(lower[0].x, lower[0].y);
         lowerLayer.lineTo(lower[1].x, lower[1].y);
         lowerLayer.lineTo(lower[2].x, lower[2].y);

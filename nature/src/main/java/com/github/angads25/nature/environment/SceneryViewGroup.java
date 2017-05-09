@@ -76,6 +76,12 @@ public class SceneryViewGroup extends NatureViewGroup {
                                     MeasureSpec.EXACTLY));
                 }
             }
+            else if (child instanceof ForestViewGroup) {
+                child.measure(MeasureSpec.makeMeasureSpec(width,
+                        MeasureSpec.EXACTLY),
+                        MeasureSpec.makeMeasureSpec((height >>> 1) / 3 ,
+                                MeasureSpec.EXACTLY));
+            }
         }
     }
 
@@ -126,6 +132,13 @@ public class SceneryViewGroup extends NatureViewGroup {
                     mTmpChildRect.bottom = mTmpChildRect.top + largeCloudSize;
                     child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
                 }
+            }
+            else if (child instanceof ForestViewGroup) {
+                mTmpChildRect.left = l;
+                mTmpChildRect.right = r;
+                mTmpChildRect.top = (height >>> 1) + (height/3);
+                mTmpChildRect.bottom = b;
+                child.layout(mTmpChildRect.left, mTmpChildRect.top, mTmpChildRect.right, mTmpChildRect.bottom);
             }
         }
     }
