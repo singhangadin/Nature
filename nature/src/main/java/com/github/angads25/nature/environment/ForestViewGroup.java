@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.github.angads25.nature.model.NatureViewGroup;
@@ -22,14 +23,17 @@ public class ForestViewGroup extends NatureViewGroup {
     private Random rand;
     private Rect mTmpChildRect;
     private ArrayList<Integer> x, y;
+    private Context context;
 
     public ForestViewGroup(Context context) {
         super(context);
+        this.context = context;
         initViewGroup();
     }
 
     public ForestViewGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.context = context;
         initViewGroup();
     }
 
@@ -38,7 +42,7 @@ public class ForestViewGroup extends NatureViewGroup {
         mTmpChildRect = new Rect();
         x = new ArrayList<>();
         y = new ArrayList<>();
-        setBackgroundColor(Color.parseColor("#7CFC00"));
+        setBackgroundColor(Color.parseColor("#93DB70"));
     }
 
     @Override
@@ -59,6 +63,7 @@ public class ForestViewGroup extends NatureViewGroup {
             x.add(rand.nextInt(width));
             y.add(rand.nextInt(height));
         }
+        Log.e("MEASURE","Forest Measured");
     }
 
     @Override

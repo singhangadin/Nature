@@ -7,4 +7,6 @@
         <item>#FFF9C7</item>
     </string-array>
 
+    <color name="grass_green">#93DB70</color>
+
 </resources>

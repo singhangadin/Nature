@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">nature</string>
+    <string name="delight_pref_title">Delight</string>
 </resources>

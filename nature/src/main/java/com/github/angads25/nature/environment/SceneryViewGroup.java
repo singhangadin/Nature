@@ -3,6 +3,7 @@ package com.github.angads25.nature.environment;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.github.angads25.nature.elements.LargeCloudView;
@@ -83,10 +84,14 @@ public class SceneryViewGroup extends NatureViewGroup {
                                 MeasureSpec.EXACTLY));
             }
         }
+        Log.e("MEASURE","Scenery Measured");
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        Log.e("INSIDE", l+":"+t+":"+r+":"+b);
+        height = b-t;
+        width = r-l;
         int childs = getChildCount();
         for(int i = 0; i<childs; i++) {
             View child = getChildAt(i);

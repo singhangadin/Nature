@@ -42,10 +42,10 @@ public class MainActivity extends Activity {
         moon.setVisible(0);
         skyGroup.addView(moon);
 
-        SmallCloudView smallCloud[] = new SmallCloudView[1];
+        SmallCloudView smallCloud[] = new SmallCloudView[6];
         for(int i=0;i<smallCloud.length;i++) {
             smallCloud[i] = new SmallCloudView(this);
-            smallCloud[i].setCloudColor(Color.parseColor("#CCCDDD"));
+            smallCloud[i].setCloudColor(Color.parseColor("#EEEFFF"));
             skyGroup.addView(smallCloud[i]);
         }
         view.addView(skyGroup);
@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
         view.addView(mountainViewGroup);
 
         MediumCloudView mediumView = new MediumCloudView(this);
-        mediumView.setCloudColor(Color.parseColor("#DDDEEE"));
+        mediumView.setCloudColor(Color.parseColor("#EEEFFF"));
         skyGroup.addView(mediumView);
 
         LargeCloudView largeView = new LargeCloudView(this);

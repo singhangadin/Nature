@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.github.angads25.nature.elements.LargeCloudView;
@@ -55,9 +56,9 @@ public class SkyViewGroup extends NatureViewGroup {
                                 MeasureSpec.EXACTLY));
             }
             else if(child instanceof SunView) {
-                child.measure(MeasureSpec.makeMeasureSpec(minDim/5,
+                child.measure(MeasureSpec.makeMeasureSpec(minDim/4,
                         MeasureSpec.EXACTLY),
-                        MeasureSpec.makeMeasureSpec(minDim/5,
+                        MeasureSpec.makeMeasureSpec(minDim/4,
                                 MeasureSpec.EXACTLY));
             }
             else if (child instanceof CloudView) {
@@ -87,11 +88,14 @@ public class SkyViewGroup extends NatureViewGroup {
                                 MeasureSpec.EXACTLY));
             }
         }
+        Log.e("MEASURE","Sky Measured");
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int childs = getChildCount();
+        width = r-l;
+        height = b-t;
         int widgetPadding = (minDim >>> 1) / 5;
         for(int i = 0; i<childs; i++) {
             View child = getChildAt(i);
@@ -99,7 +103,7 @@ public class SkyViewGroup extends NatureViewGroup {
                 child.layout(l, t, r, b);
             }
             else if(child instanceof SunView) {
-                int sunSize = minDim/5;
+                int sunSize = minDim/4;
                 mTmpChildRect.left = widgetPadding;
                 mTmpChildRect.right = mTmpChildRect.left + sunSize;
                 mTmpChildRect.top = widgetPadding;

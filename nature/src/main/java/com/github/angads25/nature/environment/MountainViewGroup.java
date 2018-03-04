@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.github.angads25.nature.model.NatureViewGroup;
@@ -53,6 +54,7 @@ public class MountainViewGroup extends NatureViewGroup {
                     MeasureSpec.makeMeasureSpec(height,
                             MeasureSpec.EXACTLY));
         }
+        Log.e("MEASURE","Mountain Measured");
     }
 
     @Override

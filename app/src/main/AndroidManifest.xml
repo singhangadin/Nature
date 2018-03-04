@@ -16,6 +16,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".DelightSettings"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:exported="true"
+            android:label="@string/delight_pref_title"/>
+
+        <service
+            android:name=".DelightService"
+            android:enabled="true"
+            android:label="@string/delight_pref_title"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/delightwallpaper"/>
+        </service>
     </application>
 
 </manifest>

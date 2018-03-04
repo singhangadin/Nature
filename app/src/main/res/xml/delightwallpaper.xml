@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wallpaper
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/delight_pref_title"
+    android:settingsActivity="com.alive.analogclocklivewallpaper.wallpapersettings.ELiteClockSettings"
+    android:thumbnail="@drawable/ic_launcher"/>
